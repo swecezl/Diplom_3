@@ -1,6 +1,8 @@
 import requests
 import random
 import string
+import allure
+from data import *
 from faker import Faker
 
 faker = Faker()
@@ -12,6 +14,7 @@ def generate_random_string(length):
     return random_string
 
 
+@allure.step("Создание нового пользователя")
 def register_new_user_return_login_pass_and_response():
     login_pass = []
 
@@ -25,7 +28,7 @@ def register_new_user_return_login_pass_and_response():
         "name": name
     }
 
-    response = requests.post('https://stellarburgers.nomoreparties.site/api/auth/register', data=payload)
+    response = requests.post(Endpoints.REGISTRATION, data=payload)
 
     if response.status_code == 200:
         login_pass.append(email)

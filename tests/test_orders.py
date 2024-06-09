@@ -38,7 +38,6 @@ class TestOrdersLine:
         main_page.click_on_personal_account_button()
         account_page = AccountPage(driver)
         account_page.click_on_history_orders_button()
-        main_page = MainPage(driver)
         main_page.check_number_orders_is_in_orders_line()
 
     @pytest.mark.parametrize('ingredient_1, ingredient_2, counter_orders', [
